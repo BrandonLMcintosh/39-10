@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import pokemonList from "./pokemonList";
 import { choice } from "./helpers";
 
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 /* Select element to choose from common pokemon. */
 function PokemonSelect({ add, pokemon = pokemonList }) {
   const [pokeIdx, setPokeIdx] = useState(0);
@@ -18,8 +19,8 @@ function PokemonSelect({ add, pokemon = pokemonList }) {
           </option>
         ))}
       </select>
-      <button onClick={() => add(pokemon[pokeIdx])}>Catch one!</button>
-      <button onClick={() => add(choice(pokemon))}>I'm feeling lucky</button>
+      <button onClick={() => add(BASE_URL, pokemon[pokeIdx])}>Catch one!</button>
+      <button onClick={() => add(BASE_URL, choice(pokemon))}>I'm feeling lucky</button>
     </div>
   );
 }
